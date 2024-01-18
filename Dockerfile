@@ -9,7 +9,8 @@ RUN git clone --single-branch -b master --depth 1 https://github.com/xmrig/xmrig
     && cd /xmrig/build \
     && cmake .. -DWITH_HTTPD=OFF \
     && make
+    && make install
 
 # Set up entry point to run xmrig
 WORKDIR /xmrig/build
-ENTRYPOINT ["./xmrig"
+ENTRYPOINT ["./xmrig"]
