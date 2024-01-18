@@ -1,8 +1,8 @@
 FROM ubuntu:23.10
 
-RUN apt-get update
-RUN apt-get upgrade -y
-RUN apt-get install -y git libhwloc-dev build-essential cmake libuv1-dev libssl-dev
+RUN apt update
+RUN apt upgrade -y
+RUN apt install -y git libhwloc-dev build-essential cmake libuv1-dev libssl-dev
 
 RUN git clone --single-branch -b master --depth 1 https://github.com/xmrig/xmrig.git /xmrig \
     && mkdir /xmrig/build \
