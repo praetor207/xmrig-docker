@@ -2,7 +2,6 @@
 
 docker run -it \
     --name monero_miner \
-    -v /home/wfisher/monero:/monero \
     praetor242/xmrig:latest \
     --coin monero \
     -o stratum+tcp://xmr-us-east1.nanopool.org:10300 \
