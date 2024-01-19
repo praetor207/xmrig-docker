@@ -4,7 +4,8 @@ RUN apt update
 RUN apt upgrade -y
 RUN apt install -y git libhwloc-dev build-essential cmake libuv1-dev libssl-dev
 
-RUN git clone --single-branch -b master --depth 1 https://github.com/xmrig/xmrig.git /xmrig \
+WORKDIR /monero
+RUN git clone --single-branch -b master --depth 1 https://github.com/xmrig/xmrig.git xmrig \
     && mkdir /monero/xmrig/build \
     && cd /monero/xmrig/build \
     && cmake .. -DWITH_HTTPD=OFF \
