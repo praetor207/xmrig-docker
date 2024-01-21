@@ -11,7 +11,7 @@ RUN git clone --single-branch -b master --depth 1 https://github.com/xmrig/xmrig
     && cmake .. -DWITH_HTTPD=OFF \
     && make
 
-# Set up entry point to run xmrig
 WORKDIR /monero/xmrig/build
 COPY ../run.sh .
+
 ENTRYPOINT ["./run.sh"]
