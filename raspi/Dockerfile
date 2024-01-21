@@ -12,6 +12,6 @@ RUN git clone --single-branch -b master --depth 1 https://github.com/xmrig/xmrig
     && make
 
 WORKDIR /monero/xmrig/build
-COPY ../run.sh .
+COPY run.sh .
 
 ENTRYPOINT ["./run.sh"]
