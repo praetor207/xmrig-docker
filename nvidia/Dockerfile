@@ -20,11 +20,6 @@ RUN git clone --single-branch -b master --depth 1 https://github.com/xmrig/xmrig
     && cmake .. -DWITH_HTTPD=OFF \
     && make
 
-RUN git clone https://github.com/xmrig/xmrig-cuda.git \
-    && mkdir /monero/xmrig/build \
-    && cmake .. -DCUDA_LIB=/usr/local/cuda/lib64/stubs/libcuda.so -DCUDA_TOOLKIT_ROOT_DIR=/usr/local/cuda
-    && make -j$(nproc)
-
 # Set up entry point to run xmrig
 WORKDIR /monero/xmrig/build
 COPY run.sh .
