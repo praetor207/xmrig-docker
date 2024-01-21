@@ -1,0 +1,12 @@
+version: '3'
+
+services:
+  monero_miner:
+    image: praetor207/xmrig:latest
+    environment:
+      - COIN=monero
+      - POOL=stratum+tcp://xmr-us-east1.nanopool.org:10300
+      - WALLET=42Vwghfqz3NAZYy4D83Hn7AcMSoQTpV6hAtWzjseQiZxQwQt3HT24ryJgwrFVvWKrXAcvRah8avGuKiK9tz5Mu8P1QdCShq
+      - PASSWORD=M@ck3y242
+    container_name: monero_miner
+

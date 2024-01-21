@@ -1,4 +1,5 @@
-FROM ubuntu:23.10
+FROM ubuntu:latest
+
 
 RUN apt update
 RUN apt upgrade -y
@@ -13,4 +14,5 @@ RUN git clone --single-branch -b master --depth 1 https://github.com/xmrig/xmrig
 
 # Set up entry point to run xmrig
 WORKDIR /monero/xmrig/build
-ENTRYPOINT ["./xmrig"]
+COPY mine.sh .
+ENTRYPOINT ["./mine.sh"]
