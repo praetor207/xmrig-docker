@@ -3,6 +3,8 @@ version: '3'
 services:
   monero_miner:
     image: praetor207/xmrig:arm
+    env_file:
+      - ~/.env
     environment:
       - COIN=monero
       - POOL=stratum+tcp://xmr-us-east1.nanopool.org:10300
