@@ -6,6 +6,8 @@ services:
     env_file:
       - /home/wfisher/.env
     environment:
+      - WORKER_NAME=${WORKER_NAME}
+    environment:
       - COIN=monero
       - POOL=stratum+tcp://xmr-us-east1.nanopool.org:10300
       - WALLET=42Vwghfqz3NAZYy4D83Hn7AcMSoQTpV6hAtWzjseQiZxQwQt3HT24ryJgwrFVvWKrXAcvRah8avGuKiK9tz5Mu8P1QdCShq/pi1/praetor207@gmail.com
