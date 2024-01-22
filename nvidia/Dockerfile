@@ -12,13 +12,12 @@ RUN dpkg -i cuda-keyring_1.1-1_all.deb
 RUN apt-get update
 RUN apt-get install -y cuda
 
+RUN git clone --single-branch --depth 1 https://github.com/xmrig/xmrig.git .
+
 RUN mkdir build && cd build && \
-    cmake .. -DCUDA_ARCH=61 && \
+    cmake .. -DCUDA_ARCH=61 -DCUDA_LIB=/usr/local/cuda/lib64/stubs/libcuda.so -DCUDA_TOOLKIT_ROOT_DIR=/usr/local/cuda && \
     make -j$(nproc)
 
-ENTRYPOINT ["xmrig"]
-
-# Set up entry point to run xmrig
 WORKDIR /monero/xmrig/build
 COPY run.sh .
 
