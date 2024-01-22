@@ -1,22 +1,25 @@
-# Use an official Nvidia runtime base image
-FROM nvidia/cuda:11.1-base
+FROM ubuntu:latest
 
-WORKDIR /monero
+ENV DEBIAN_FRONTEND=noninteractive
 
-RUN apt-get update && \
-    apt-get install -y \
-        cmake \
-        git \
-        build-essential \
-        libuv1-dev \
-        libmicrohttpd-dev \
-        libssl-dev && \
-    rm -rf /var/lib/apt/lists/*
+RUN apt update
+RUN apt upgrade -y
+RUN apt install -y git libhwloc-dev build-essential cmake libuv1-dev libssl-dev wget
 
-RUN git clone --single-branch --depth 1 https://github.com/xmrig/xmrig.git .
+RUN wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2204/x86_64/cuda-keyring_1.1-1_all.deb
+RUN dpkg -i cuda-keyring_1.1-1_all.deb
+
+RUN apt-get update
+RUN apt-get install -y cuda
 
 RUN mkdir build && cd build && \
     cmake .. -DCUDA_ARCH=61 && \
     make -j$(nproc)
 
 ENTRYPOINT ["xmrig"]
+
+# Set up entry point to run xmrig
+WORKDIR /monero/xmrig/build
+COPY run.sh .
+
+ENTRYPOINT ["/bin/sh"]
