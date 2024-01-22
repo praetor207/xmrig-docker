@@ -2,11 +2,9 @@ FROM ubuntu:latest
 
 ENV DEBIAN_FRONTEND=noninteractive
 
-RUN apt-get update
-RUN apt-get upgrade -y
 RUN apt-get update && \
     apt-get install -y git libhwloc-dev build-essential cmake libuv1-dev libssl-dev wget
-
+RUN apt-get upgrade -y
 
 WORKDIR /monero
 RUN git clone --single-branch -b master --depth 1 https://github.com/xmrig/xmrig.git xmrig \
