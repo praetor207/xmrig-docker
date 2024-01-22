@@ -2,4 +2,4 @@
 
 export RIG_IDLE=60
 
-./xmrig --coin $COIN -o $POOL -u $WALLET -p $PASSWORD --worker $WORKER_NAME --cuda
+./xmrig --coin $COIN -o $POOL -u $WALLET -p $PASSWORD --cuda
