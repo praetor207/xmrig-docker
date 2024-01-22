@@ -1,8 +1,12 @@
 FROM ubuntu:latest
 
-RUN apt update
-RUN apt upgrade -y
-RUN apt install -y git libhwloc-dev build-essential cmake libuv1-dev libssl-dev
+ENV DEBIAN_FRONTEND=noninteractive
+
+RUN apt-get update
+RUN apt-get upgrade -y
+RUN apt-get update && \
+    apt-get install -y git libhwloc-dev build-essential cmake libuv1-dev libssl-dev wget
+
 
 WORKDIR /monero
 RUN git clone --single-branch -b master --depth 1 https://github.com/xmrig/xmrig.git xmrig \
@@ -12,6 +16,6 @@ RUN git clone --single-branch -b master --depth 1 https://github.com/xmrig/xmrig
     && make
 
 WORKDIR /monero/xmrig/build
-COPY ../run.sh .
+COPY run.sh .
 
 ENTRYPOINT ["./run.sh"]
