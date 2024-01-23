@@ -7,7 +7,7 @@ RUN apt update \
 RUN wget https://repo.radeon.com/amdgpu-install/6.0/ubuntu/jammy/amdgpu-install_6.0.60000-1_all.deb \
     && dpkg -i amdgpu-install_6.0.60000-1_all.deb \
     && apt-get update \
-    && apt-get install ocl-icd-opencl-dev ocl-icd-libopencl1 clinfo
+    && apt-get -y install ocl-icd-opencl-dev ocl-icd-libopencl1 clinfo
 
 RUN amdgpu-install --no-32 --usecase=opencl,rocm,hip --accept-eula
 
