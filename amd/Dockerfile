@@ -9,6 +9,8 @@ RUN wget https://repo.radeon.com/amdgpu-install/6.0/ubuntu/jammy/amdgpu-install_
     && apt-get update \
     && apt-get -y install ocl-icd-opencl-dev ocl-icd-libopencl1 clinfo
 
+RUN amdgpu-install --no-32 --usecase=opencl,rocm,hip --accept-eula
+
 WORKDIR /monero
 RUN git clone --single-branch -b master --depth 1 https://github.com/xmrig/xmrig.git xmrig \
     && mkdir /monero/xmrig/build \
@@ -19,9 +21,11 @@ RUN git clone --single-branch -b master --depth 1 https://github.com/xmrig/xmrig
 WORKDIR /monero/xmrig/build
 COPY ../run.sh .
 
-ENTRYPOINT ["./run.sh"]
-
-# Cleanup
 RUN apt-get autoremove -y \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
+
+ENTRYPOINT ["./run.sh"]
+
+
+

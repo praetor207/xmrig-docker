@@ -3,13 +3,12 @@ FROM ubuntu:latest
 ENV DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update \
-    && RUN apt-get upgrade -y \
+    && apt-get upgrade -y \
     && apt install -y git libhwloc-dev build-essential cmake libuv1-dev libssl-dev wget
 
 RUN wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2204/x86_64/cuda-keyring_1.1-1_all.deb \
-    && dpkg -i cuda-keyring_1.1-1_all.deb
-
-RUN apt-get update \
+    && dpkg -i cuda-keyring_1.1-1_all.deb \
+    && apt-get update \
     && apt-get install -y cuda
 
 WORKDIR /monero
@@ -30,7 +29,10 @@ WORKDIR /monero/xmrig/build
 
 RUN cp /monero/xmrig-cuda/build/libxmrig-cuda.so .
 
-COPY run.sh .
+RUN apt-get autoremove -y \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
 
+COPY run.sh .
 ENTRYPOINT ["./run.sh"]
 
