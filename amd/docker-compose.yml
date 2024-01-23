@@ -3,6 +3,7 @@ version: '3'
 services:
   monero_miner:
     image: praetor207/xmrig:amd
+    privileged: true
     env_file:
       - /home/wfisher/.env
     environment:
