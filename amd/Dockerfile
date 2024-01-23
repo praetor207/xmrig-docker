@@ -1,12 +1,13 @@
 FROM ubuntu:latest
 
-RUN wget https://repo.radeon.com/amdgpu-install/6.0/ubuntu/jammy/amdgpu-install_6.0.60000-1_all.deb
-RUN dpkg -i amdgpu-install_6.0.60000-1_all.deb
-RUN apt-get update 
-
 RUN apt update \
     && apt upgrade -y \
-    && apt install -y git libhwloc-dev build-essential cmake libuv1-dev libssl-dev ocl-icd-opencl-dev wget
+    && apt install -y git libhwloc-dev build-essential cmake libuv1-dev libssl-dev wget
+
+RUN wget https://repo.radeon.com/amdgpu-install/6.0/ubuntu/jammy/amdgpu-install_6.0.60000-1_all.deb \
+    && dpkg -i amdgpu-install_6.0.60000-1_all.deb \
+    && apt-get update \
+    && apt-get install ocl-icd-opencl-dev
 
 WORKDIR /monero
 RUN git clone --single-branch -b master --depth 1 https://github.com/xmrig/xmrig.git xmrig \
