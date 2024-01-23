@@ -1,8 +1,8 @@
 FROM ubuntu:latest
 
-RUN apt update \
-    && apt upgrade -y \
-    && apt install -y git libhwloc-dev build-essential cmake libuv1-dev libssl-dev wget
+RUN apt-get update \
+    && apt-get upgrade -y \
+    && apt-get install -y git libhwloc-dev build-essential cmake libuv1-dev libssl-dev wget
 
 RUN wget https://repo.radeon.com/amdgpu-install/6.0/ubuntu/jammy/amdgpu-install_6.0.60000-1_all.deb \
     && dpkg -i amdgpu-install_6.0.60000-1_all.deb \
