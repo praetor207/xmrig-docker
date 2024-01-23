@@ -2,7 +2,7 @@ version: '3'
 
 services:
   monero_miner:
-    image: praetor207/xmrig:nvidia
+    image: praetor207/xmrig:amd
     env_file:
       - /home/wfisher/.env
     environment:
