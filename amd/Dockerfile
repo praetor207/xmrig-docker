@@ -1,6 +1,6 @@
 FROM ubuntu:latest
 
-RUN wget wget https://repo.radeon.com/amdgpu-install/6.0/ubuntu/jammy/amdgpu-install_6.0.60000-1_all.deb
+RUN wget https://repo.radeon.com/amdgpu-install/6.0/ubuntu/jammy/amdgpu-install_6.0.60000-1_all.deb
 RUN dpkg -i amdgpu-install_6.0.60000-1_all.deb
 RUN apt-get update 
 
