@@ -2,7 +2,7 @@ FROM ubuntu:latest
 
 RUN apt-get update \
     && apt-get upgrade -y \
-    && apt-get install -y git libhwloc-dev build-essential cmake libuv1-dev libssl-dev wget ocl-icd-opencl-dev ocl-icd-libopencl1 cltool
+    && apt-get install -y git libhwloc-dev build-essential cmake libuv1-dev libssl-dev wget ocl-icd-opencl-dev ocl-icd-libopencl1 clinfo
 
 WORKDIR /monero
 RUN git clone --single-branch -b master --depth 1 https://github.com/xmrig/xmrig.git xmrig \
