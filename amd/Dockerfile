@@ -1,4 +1,4 @@
-FROM ubuntu:22.04-minimal
+FROM ubuntu:latest
 
 RUN apt update \
     && apt upgrade -y \
