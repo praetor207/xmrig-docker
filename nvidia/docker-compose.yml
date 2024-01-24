@@ -5,10 +5,12 @@ services:
     image: praetor207/xmrig:nvidia
     restart: always
     env_file:
-      - /home/wfisher/.env
+      - /home/praetor/.env
     container_name: monero_miner
-    runtime: nvidia
-    devices:
-      - /dev/nvidiactl
-      - /dev/nvidia-uvm
-      - /dev/nvidia0
+    deploy:
+      resources:
+        reservations:
+          devices:
+          - driver: nvidia
+            count: 1
+            capabilities: [gpu]
