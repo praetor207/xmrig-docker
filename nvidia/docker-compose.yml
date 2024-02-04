@@ -4,6 +4,7 @@ services:
   monero_miner:
     image: praetor207/xmrig:nvidia
     restart: always
+    privileged: true
     env_file:
       - /home/praetor/.env
     container_name: monero_miner
