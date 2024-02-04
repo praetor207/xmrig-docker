@@ -6,7 +6,7 @@ RUN apt-get update \
 
 RUN wget https://repo.radeon.com/amdgpu-install/23.40.1/ubuntu/jammy/amdgpu-install_6.0.60001-1_all.deb \
     && dpkg -i amdgpu-install_6.0.60001-1_all.deb \
-    && apt-get update
+    && apt-get update \
     && amdgpu-install --usecase=opencl --accept-eula
 
 WORKDIR /monero
