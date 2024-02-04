@@ -6,4 +6,5 @@ services:
     env_file:
       - /home/praetor/.env
     container_name: monero_miner
+    privileged: true
 
