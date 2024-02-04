@@ -4,6 +4,6 @@ services:
   monero_miner:
     image: praetor207/xmrig:latest
     env_file:
-      - /home/wfisher/.env
+      - /home/praetor/.env
     container_name: monero_miner
 

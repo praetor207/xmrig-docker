@@ -6,12 +6,12 @@ RUN apt-get update \
     && apt-get upgrade -y \
     && apt install -y git libhwloc-dev build-essential cmake libuv1-dev libssl-dev wget
 
+WORKDIR /monero
+
 RUN wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2204/x86_64/cuda-keyring_1.1-1_all.deb \
     && dpkg -i cuda-keyring_1.1-1_all.deb \
     && apt-get update \
-    && apt-get install -y cuda libnvidia-ml-dev
-
-WORKDIR /monero
+    && apt-get install -y cuda cuda-toolkit-12-3
 
 RUN git clone https://github.com/xmrig/xmrig-cuda.git \
     && mkdir xmrig-cuda/build \
@@ -35,4 +35,5 @@ RUN apt-get autoremove -y \
 
 COPY run.sh .
 ENTRYPOINT ["./run.sh"]
+
 
