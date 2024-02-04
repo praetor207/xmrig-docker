@@ -5,7 +5,7 @@ services:
     image: praetor207/xmrig:amd
     privileged: true
     env_file:
-      - /home/wfisher/.env
+      - /home/praetor/.env
     environment:
       - COIN=monero
       - POOL=stratum+tcp://xmr-us-east1.nanopool.org:10300
