@@ -5,7 +5,7 @@ RUN apt-get update \
     && apt-get install -y git libhwloc-dev build-essential cmake libuv1-dev libssl-dev wget
 
 RUN wget https://repo.radeon.com/amdgpu-install/23.40.1/ubuntu/jammy/amdgpu-install_6.0.60001-1_all.deb \
-    && dpkg -i https://repo.radeon.com/amdgpu-install/23.40.1/ubuntu/jammy/amdgpu-install_6.0.60001-1_all.deb \
+    && dpkg -i amdgpu-install_6.0.60001-1_all.deb \
     && amdgpu-install --usecase=opencl --accept-eula
 
 WORKDIR /monero
